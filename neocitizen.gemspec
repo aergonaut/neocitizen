@@ -21,4 +21,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
 
   spec.add_dependency "thor", "~> 0.19"
+  spec.add_dependency "faraday", "~> 0.9"
+  spec.add_dependency "excon", "~> 0.34"
 end
