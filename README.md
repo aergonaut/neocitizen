@@ -1,5 +1,7 @@
 # Neocitizen
 
+![Travis Build Status](https://travis-ci.org/aergonaut/neocitizen.svg)
+
 **Neocitizen** is composed of two parts:
 
 1. A Ruby wrapper for the [Neocities](http://neocities.org) API, and
