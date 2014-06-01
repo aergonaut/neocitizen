@@ -6,14 +6,14 @@ module Neocitizen
   class Client
     attr_accessor :options
 
-    # Public: Build a new Neocitizen client
+    # Build a new Neocitizen client.
     #
-    # options - Hash of options
-    #           :username - Neocities username (required)
-    #           :password - Neocities password (required)
-    #           :api_host - Neocities API host (default: https://neocities.org)
+    # @param [Hash] opts initialization options
+    # @option opts [String] :username Neocities username
+    # @option opts [String] :password Neocities password
+    # @option opts [String] :api_host (https://neocities.org)
     #
-    # Returns a new Neocitizen::Client
+    # @return [Hash] JSON from the response
     def initialize(options = {})
       options = {
         username: ENV["NEOCITIZEN_USERNAME"],
@@ -25,26 +25,28 @@ module Neocitizen
       self.options = options
     end
 
-    # Public: Get info about a single site
+    # Get info about a Neocities site
     #
-    # sitename - the site to check (defaults to authenticated user)
+    # @example Get info on a site
+    #   client.info("cool-site")
     #
-    # Returns a Hash of the site info
+    # @param [String] sitename Neocities site to get info about (defaults to the authenticated user)
+    #
+    # @return [Hash] JSON from the response
     def info(sitename = nil)
       sitename ||= options[:username]
       response = connection.get "/api/info", { sitename: sitename }
       MultiJson.load(response.body)
     end
 
-    # Public: Upload files to Neocities
+    # Upload one or more files to Neocities
     #
-    # files - Zero or more filenames to upload
+    # @example Upload files
+    #   client.upload("index.html", "cool-graphic.gif")
     #
-    # Examples
+    # @param [Array] files file names to upload
     #
-    #   client.upload("index.html", "sweet_graphic.gif")
-    #
-    # Returns nothing
+    # @returns [Hash] JSON from the response
     def upload(*files)
       payload = files.inject({}) do |hash, filename|
         type = MimeMagic.by_path(filename)
