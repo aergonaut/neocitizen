@@ -1,5 +1,6 @@
 require 'faraday'
 require 'excon'
+require 'mimemagic'
 
 module Neocitizen
   class Client
@@ -47,11 +48,13 @@ module Neocitizen
     def upload(*files)
       payload = files.inject({}) do |hash, filename|
         type = MimeMagic.by_path(filename)
-        hash[filename.to_sym] = Faraday::UploadIO.new(filename, type)
+        basename = File.basename(filename)
+        hash[basename.to_sym] = Faraday::UploadIO.new(filename, type)
         hash
       end
 
-      connection.post "/api/upload", payload
+      response = connection.post "/api/upload", payload
+      MultiJson.load(response.body)
     end
 
     private
