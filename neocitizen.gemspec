@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock"
   spec.add_development_dependency "rspec"
+  spec.add_development_dependency "yard"
 
   spec.add_dependency "thor", "~> 0.19"
   spec.add_dependency "faraday", "~> 0.9"

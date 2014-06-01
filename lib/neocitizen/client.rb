@@ -8,10 +8,10 @@ module Neocitizen
 
     # Build a new Neocitizen client.
     #
-    # @param [Hash] opts initialization options
-    # @option opts [String] :username Neocities username
-    # @option opts [String] :password Neocities password
-    # @option opts [String] :api_host (https://neocities.org)
+    # @param [Hash] options initialization options
+    # @option options [String] :username Neocities username
+    # @option options [String] :password Neocities password
+    # @option options [String] :api_host (https://neocities.org)
     #
     # @return [Hash] JSON from the response
     def initialize(options = {})
