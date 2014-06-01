@@ -31,6 +31,32 @@ my-cool-site
 
 The `content` directory will contain all the files the will be uploaded to your site. Neocitizen will use Git to determine what files should be uploaded in order to minimize bandwidth usage.
 
+### Publishing your site
+
+When you're ready to publish your site to Neocities, simply run `rake publish` from inside your project directory.
+
+Neocitizen will use Git to determine which `content` files were changed in your most recent commit and only upload those. If you have uncommitted changes, Neocitizen will warn you about this and stop to let you clean up.
+
+### The API client
+
+If you want to build your own tools around the Neocities API, you can use the `Neocitizen::Client` class to do so.
+
+Creating a new API client is easy:
+
+```ruby
+require 'neocitizen'
+
+client = Neocitizen::Client.new(username: "my-cool-site", password: "abc123")
+```
+
+You can also set the `NEOCITIZEN_USERNAME` and `NEOCITIZEN_PASSWORD` environment variables instead of passing them as options to the constructor.
+
+To upload files to your site, use the `upload` method on a client object. `upload` takes a list of file names relative to your `pwd` and uploads all of them:
+
+```ruby
+client.upload("index.html", "under_construction.gif")
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/aergonaut/neocitizen/fork )
