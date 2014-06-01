@@ -61,7 +61,6 @@ module Neocitizen
         faraday.request :basic_auth, self.options[:username], self.options[:password]
         faraday.request :multipart
         faraday.request :url_encoded
-        faraday.response :logger
         faraday.adapter :excon
       end
     end
