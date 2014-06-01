@@ -11,7 +11,7 @@ module Neocitizen
     end
 
     def self.source_root
-      File.dirname(File.join("..", "..", "..", "templates"), __FILE__)
+      File.basename(File.expand_path(File.join("..", "..", "..", "templates"), __FILE__))
     end
   end
 end

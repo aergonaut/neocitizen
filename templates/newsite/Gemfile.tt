@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+
+gem 'neocities', '<%= Neocitizen::VERSION %>'
+
+gem 'rake'
