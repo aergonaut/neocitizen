@@ -1,5 +1,4 @@
-require "neocitizen/version"
+require "multi_json"
 
-module Neocitizen
-  # Your code goes here...
-end
+require "neocitizen/version"
+require "neocitizen/client"

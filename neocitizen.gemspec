@@ -27,4 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "faraday", "~> 0.9"
   spec.add_dependency "excon", "~> 0.34"
   spec.add_dependency "mimemagic", "~> 0.2"
+  spec.add_dependency "multi_json", "~> 1.10"
+  spec.add_dependency "json_pure", "~> 1.8"
 end
